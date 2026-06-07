@@ -254,7 +254,7 @@ header {
 
 .controls {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
@@ -683,10 +683,10 @@ header {
     flex-wrap: wrap;
     align-items: stretch;
     width: 100%;
-    gap: 10px;
+    gap: 16px;
   }
   .btn-primary { min-width: 0; width: 100%; }
-  .btn-secondary { flex: 1 1 calc(50% - 5px); }
+  .btn-secondary { flex: 1 1 calc(50% - 8px); }
 }
 
 /* Notebook full-width on very small phones */
