@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomoleen — Pomodoro Timer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍅%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <span class="brand-dot" id="brandDot"></span>
+        Pomoleen
+      </div>
+      <div class="theme-wrap">
+        <button class="theme-toggle" id="themeToggle" data-theme="light" aria-label="Toggle theme">
+          <span class="theme-knob"></span>
+        </button>
+        <span class="theme-label" id="themeLabel">Light</span>
+      </div>
+    </header>
+
+    <div class="modes" role="tablist" aria-label="Timer mode">
+      <span class="modes-pill" id="modesPill" data-mode="pomodoro" aria-hidden="true"></span>
+      <button class="mode-btn active" data-mode="pomodoro" role="tab">Pomodoro</button>
+      <button class="mode-btn" data-mode="short" role="tab">Short Break</button>
+      <button class="mode-btn" data-mode="long" role="tab">Long Break</button>
+    </div>
+
+    <div class="timer-card">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 320 320" aria-hidden="true">
+          <circle class="ring-bg" cx="160" cy="160" r="150" />
+          <circle class="ring-fg" id="ringFg" cx="160" cy="160" r="150" />
+        </svg>
+        <div class="timer-display">
+          <div class="time" id="time">25:00</div>
+          <div class="label" id="label">Focus</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-primary" id="startBtn" data-mode="pomodoro">Start</button>
+        <button class="btn btn-secondary" id="resetBtn">Reset</button>
+        <button class="btn btn-secondary" id="skipBtn" title="Skip to next mode">Skip</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="settings" title="Adjust durations (minutes)">
+        <span>Work</span><input type="number" id="pomoInput" min="1" max="120" value="25" />
+        <span>·</span>
+        <span>Short</span><input type="number" id="shortInput" min="1" max="60" value="5" />
+        <span>·</span>
+        <span>Long</span><input type="number" id="longInput" min="1" max="120" value="15" />
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <span class="app-footer-text">made by leen</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
