@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pomoleen — Pomodoro Timer</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍅%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="pomoleen-logo.svg" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,11 +14,21 @@
         <span class="brand-dot" id="brandDot"></span>
         Pomoleen
       </div>
-      <div class="theme-wrap">
-        <button class="theme-toggle" id="themeToggle" data-theme="light" aria-label="Toggle theme">
-          <span class="theme-knob"></span>
+      <div class="header-controls">
+        <button class="palette-btn" id="paletteBtn" aria-label="Color preferences" title="Customize colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
+            <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
+            <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>
+          </svg>
         </button>
-        <span class="theme-label" id="themeLabel">Light</span>
+        <div class="theme-wrap">
+          <button class="theme-toggle" id="themeToggle" data-theme="light" aria-label="Toggle theme">
+            <span class="theme-knob"></span>
+          </button>
+          <span class="theme-label" id="themeLabel">Light</span>
+        </div>
       </div>
     </header>
 
@@ -52,9 +62,9 @@
       <div class="settings" title="Adjust durations (minutes)">
         <span>Work</span><input type="number" id="pomoInput" min="1" max="120" value="25" />
         <span>·</span>
-        <span>Short</span><input type="number" id="shortInput" min="1" max="60" value="5" />
+        <span>Short</span><input type="number" id="shortInput" min="1" max="10" value="5" />
         <span>·</span>
-        <span>Long</span><input type="number" id="longInput" min="1" max="120" value="15" />
+        <span>Long</span><input type="number" id="longInput" min="1" max="30" value="15" />
       </div>
     </div>
   </div>
@@ -62,6 +72,94 @@
   <footer class="app-footer">
     <span class="app-footer-text">made by leenie</span>
   </footer>
+
+  <!-- Color Preferences Modal -->
+  <div class="prefs-overlay" id="prefsOverlay" aria-hidden="true">
+    <div class="prefs-modal" role="dialog" aria-modal="true" aria-labelledby="prefsTitle">
+      <div class="prefs-header">
+        <h2 class="prefs-title" id="prefsTitle">Preferences</h2>
+        <button class="prefs-close" id="prefsClose" aria-label="Close preferences">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="prefs-body">
+        <div class="prefs-section-header">
+          <span class="prefs-section-tag">THEME</span>
+          <span class="prefs-section-hint">Accent colour for each timer mode</span>
+        </div>
+        <div class="prefs-card">
+          <div class="prefs-row">
+            <span class="prefs-row-icon" aria-hidden="true" style="color: var(--accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="4"></circle>
+              </svg>
+            </span>
+            <span class="prefs-row-label">Pomodoro</span>
+            <label class="color-picker-wrap" aria-label="Choose Pomodoro color" title="Choose colour">
+              <span class="color-preview" id="colorPreviewPomodoro"></span>
+              <input type="color" class="color-picker" id="colorPickerPomodoro" value="#e11d48" tabindex="-1">
+            </label>
+          </div>
+          <div class="prefs-row-sep"></div>
+          <div class="prefs-row">
+            <span class="prefs-row-icon" aria-hidden="true" style="color: var(--break);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </span>
+            <span class="prefs-row-label">Short Break</span>
+            <label class="color-picker-wrap" aria-label="Choose Short Break color" title="Choose colour">
+              <span class="color-preview" id="colorPreviewShort"></span>
+              <input type="color" class="color-picker" id="colorPickerShort" value="#0ea5e9" tabindex="-1">
+            </label>
+          </div>
+          <div class="prefs-row-sep"></div>
+          <div class="prefs-row">
+            <span class="prefs-row-icon" aria-hidden="true" style="color: var(--long-break);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 22c1.25-1.67 2-3 4-5.5"></path>
+              </svg>
+            </span>
+            <span class="prefs-row-label">Long Break</span>
+            <label class="color-picker-wrap" aria-label="Choose Long Break color" title="Choose colour">
+              <span class="color-preview" id="colorPreviewLong"></span>
+              <input type="color" class="color-picker" id="colorPickerLong" value="#10b981" tabindex="-1">
+            </label>
+          </div>
+        </div>
+        <div class="prefs-section-header prefs-section-header--gap">
+          <span class="prefs-section-tag">GENERAL</span>
+          <span class="prefs-section-hint">More customisation options</span>
+        </div>
+        <div class="prefs-card prefs-card--soon">
+          <div class="prefs-row">
+            <span class="prefs-row-icon" aria-hidden="true" style="color: var(--muted);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path>
+              </svg>
+            </span>
+            <div class="prefs-soon-text">
+              <span class="prefs-row-label">Coming Soon</span>
+              <span class="prefs-soon-desc">More settings are on the way</span>
+            </div>
+            <span class="prefs-soon-badge">Soon</span>
+          </div>
+        </div>
+      </div>
+      <div class="prefs-footer">
+        <button class="prefs-cancel-btn" id="prefsCancelBtn">Cancel</button>
+        <button class="prefs-save-btn" id="prefsSaveBtn">Save</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
