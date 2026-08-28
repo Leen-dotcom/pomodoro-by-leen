@@ -166,7 +166,7 @@ header {
   width: 0;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 4px 12px var(--accent-glow);
   transition:
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -175,8 +175,8 @@ header {
   z-index: 0;
   pointer-events: none;
 }
-.modes-pill[data-mode="short"] { background: var(--break); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25); }
-.modes-pill[data-mode="long"] { background: var(--long-break); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }
+.modes-pill[data-mode="short"] { background: var(--break); box-shadow: 0 4px 12px var(--break-glow); }
+.modes-pill[data-mode="long"] { background: var(--long-break); box-shadow: 0 4px 12px var(--long-break-glow); }
 .mode-btn {
   position: relative;
   z-index: 1;
@@ -871,7 +871,6 @@ header {
   flex-shrink: 0;
   min-width: 88px;
 }
-/* Swatches inside a row: right-aligned, smaller */
 .prefs-row .swatch-row {
   flex: 1;
   justify-content: flex-end;
@@ -886,7 +885,6 @@ header {
   font-size: 12px;
 }
 
-/* Swatch Row */
 .swatch-row {
   display: flex;
   gap: 10px;
@@ -954,7 +952,6 @@ header {
   opacity: 1;
 }
 
-/* Responsive: compact palette btn on small viewports */
 @media (max-height: 560px) and (max-width: 1100px) {
   .palette-btn { width: 28px; height: 28px; border-radius: 8px; }
   .palette-btn svg { width: 13px; height: 13px; }
@@ -962,7 +959,6 @@ header {
   .swatch { width: 32px; height: 32px; }
 }
 
-/* ---------- Color Picker Wrapper ---------- */
 .color-picker-wrap {
   margin-left: auto;
   position: relative;
@@ -1001,7 +997,6 @@ header {
   -webkit-appearance: none;
 }
 
-/* ---------- Modal Footer ---------- */
 .prefs-footer {
   display: flex;
   align-items: center;
