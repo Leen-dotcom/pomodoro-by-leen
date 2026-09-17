@@ -2,7 +2,7 @@
 
 A beautiful, minimal Pomodoro technique timer with task management, sound notifications, and customizable durations.
 
-![Pomoleen Screenshot](screenshot.png)
+![Pomoleen Screenshot](src/images/screenshot.png)
 
 ## Features
 
